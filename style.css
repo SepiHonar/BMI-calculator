@@ -63,5 +63,19 @@ form {
     color: red;
     font-size: small;
 }
-
+.breadcrumb li{
+    display: flex;
+    text-decoration: none;
+    padding: 8px;
+}
+.breadcrumb li a{
+    cursor: pointer;  
+    text-decoration: none;
+    
+}
+.breadcrumb li a:hover{
+    color: #01447e;
+    text-decoration: underline;
+    
+}
 

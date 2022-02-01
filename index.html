@@ -11,7 +11,15 @@
 </head>
 
 <body>
+  <nav>
 
+    <ul class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Pictures</a></li>
+      <li><a href="./index.html">BMI calculator</a></li>
+    </ul>
+
+  </nav>
 
   <div class="form-box">
 
@@ -22,7 +30,7 @@
       <form action="javascript:calculate()">
 
         <div class="form-floating">
-          <input type="number" class="form-control" id="floatingweight" placeholder="Enter your Weight" required>
+          <input type="text" class="form-control" id="floatingweight" placeholder="Enter your Weight" required>
           <label for="floatingweight">Enter your Weight</label>
           <span id="errorNumber"></span>
           <span id="accepted"></span>
@@ -129,21 +137,39 @@
 
 
 
-      var BMI = Math.round(weight / Math.pow(height, 2) * 10000);
-      if (BMI < 24) {
-        document.getElementById('resualt').innerHTML = "&#128522";
+      var bmi = Math.round(weight / Math.pow(height, 2) * 10000);
+      saveBmis(bmi);
+
+
+
+
+      if (bmi < 24) {
+        document.getElementById('resualt').innerHTML = ` your BMI is : ${bmi} &#128522`;
 
       }
-      if (BMI > 24) {
-        document.getElementById('resualt').innerHTML = "&#128546";
+      if (bmi > 24) {
+        document.getElementById('resualt').innerHTML = ` your BMI is : ${bmi} &#128546`;
 
       }
-      if (BMI > 30) {
-        document.getElementById('resualt').innerHTML = "&#128557";
-        return
+      if (bmi > 30) {
+        document.getElementById('resualt').innerHTML = ` your BMI is : ${bmi} &#128557`;
+
+
       }
 
     }
+    function saveBmis(e) {
+      var BMI = [];
+
+      BMI.push(e);
+      localStorage.setItem("BMI", JSON.stringify(BMI));
+    }
+
+
+
+
+
+
     function re() {
       document.getElementById("floatingheight").innerHTML = '';
       document.getElementById("floatingweight").innerHTML = '';
