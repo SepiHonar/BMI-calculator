@@ -159,10 +159,11 @@
 
     }
     function saveBmis(e) {
-      var BMI = [];
+      var BMIs = [];
 
-      BMI.push(e);
-      localStorage.setItem("BMI", JSON.stringify(BMI));
+      BMIs = JSON.parse(localStorage.getItem('session')) || [];
+      BMIs.push(e);
+      localStorage.setItem('session', JSON.stringify(BMIs));
     }
 
 
