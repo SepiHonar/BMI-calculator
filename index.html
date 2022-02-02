@@ -11,14 +11,21 @@
 </head>
 
 <body>
-  <nav>
+  <nav class="navbar fixed-top navbar-dark bg-dark ">
+    <div class="ulNav ">
 
-    <ul class="breadcrumb">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Pictures</a></li>
-      <li><a href="./index.html">BMI calculator</a></li>
-    </ul>
-
+      <ul class="breadcrumb ">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Pictures</a></li>
+        <li><a href="./index.html">BMI calculator</a></li>
+      </ul>
+      
+    </div>
+    <div>
+      <button class="navbar-toggler d-lg-none d-md-none d-sm-flex" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
   </nav>
 
   <div class="form-box">
@@ -138,31 +145,38 @@
 
 
       var bmi = Math.round(weight / Math.pow(height, 2) * 10000);
-      saveBmis(bmi);
-
-
-
-
+     
+      
+      
+      
+      
       if (bmi < 24) {
         document.getElementById('resualt').innerHTML = ` your BMI is : ${bmi} &#128522`;
-
+        
       }
       if (bmi > 24) {
         document.getElementById('resualt').innerHTML = ` your BMI is : ${bmi} &#128546`;
-
+        
       }
       if (bmi > 30) {
         document.getElementById('resualt').innerHTML = ` your BMI is : ${bmi} &#128557`;
-
-
+        
+        
       }
-
+      var obj = {
+        h:height,
+        w:weight,
+        b : bmi
+      };
+      
+      saveBmis(obj);
     }
-    function saveBmis(e) {
+
+    function saveBmis(event) {
       var BMIs = [];
 
-      BMIs = JSON.parse(localStorage.getItem('session')) || [];
-      BMIs.push(e);
+      BMIs = JSON.parse(localStorage.getItem('session') || []) ;
+      BMIs.push(event);
       localStorage.setItem('session', JSON.stringify(BMIs));
     }
 

@@ -65,17 +65,29 @@ form {
 }
 .breadcrumb li{
     display: flex;
-    text-decoration: none;
     padding: 8px;
+    
 }
 .breadcrumb li a{
     cursor: pointer;  
     text-decoration: none;
+    color: #fff;
     
 }
 .breadcrumb li a:hover{
-    color: #01447e;
+    color: #fff;
     text-decoration: underline;
     
 }
-
+.navbar{
+    color: #fff;
+}
+ 
+@media screen and (max-width: 425px) {
+    .ulNav {
+        display: none;
+    }
+    .form-box-sub{
+        max-width: 71%;
+    }
+}
