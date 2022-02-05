@@ -90,4 +90,7 @@ form {
     .form-box-sub{
         max-width: 71%;
     }
+    .ulNavSm{
+        display:inline;
+    }
 }

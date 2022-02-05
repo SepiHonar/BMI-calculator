@@ -5,12 +5,14 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./assets/bootstrap-5.1.3-dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./assets/CSS/css/bootstrap.min.css" />
   <link rel="stylesheet" href="./style.css" />
+  <link rel="shortcut icon" href="#">
   <title>Project1</title>
 </head>
 
 <body>
+
   <nav class="navbar fixed-top navbar-dark bg-dark ">
     <div class="ulNav ">
 
@@ -19,14 +21,16 @@
         <li><a href="#">Pictures</a></li>
         <li><a href="./index.html">BMI calculator</a></li>
       </ul>
-      
+
     </div>
-    <div>
-      <button class="navbar-toggler d-lg-none d-md-none d-sm-flex" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
+    <button class="navbar-toggler d-lg-none d-md-none d-sm-flex" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
   </nav>
+
 
   <div class="form-box">
 
@@ -80,6 +84,17 @@
         e.target.value = e.target.value.replace(/[0-9\.]/g, '');
         return
       }
+
+      if (/[^0-9\.]/g.test(document.getElementById('floatingweight').value)) {
+
+        document.getElementById('floatingweight').style.borderColor = 'red';
+        document.getElementById('errorNumber').innerHTML = '';
+        document.getElementById('errorNumber').innerHTML += 'Please enter just a Number ';
+        document.getElementById('accepted').innerHTML = '';
+        e.target.value = e.target.value.replace(/[^0-9\.]/g, '');
+        return
+      }
+
       if ((document.getElementById('floatingweight').value) > 200) {
         document.getElementById('errorNumber').innerHTML = 'enter weight less than 200 ';
         document.getElementById('floatingweight').style.borderColor = 'red';
@@ -102,6 +117,15 @@
         document.getElementById('errorNumberheight').innerHTML += 'The Number must be three digit';
         document.getElementById('acceptedHeight').innerHTML = '';
         e.target.value = e.target.value.replace(/[0-9\.]/g, '');
+        return
+      }
+
+      if (/[^0-9\.]/g.test(document.getElementById('floatingheight').value)) {
+        document.getElementById('floatingheight').style.borderColor = 'red';
+        document.getElementById('errorNumberheight').innerHTML = '';
+        document.getElementById('errorNumberheight').innerHTML += 'Please enter just a Number';
+        document.getElementById('acceptedHeight').innerHTML = '';
+        e.target.value = e.target.value.replace(/[^0-9\.]/g, '');
         return
       }
       if ((document.getElementById('floatingheight').value) > 250) {
@@ -145,45 +169,43 @@
 
 
       var bmi = Math.round(weight / Math.pow(height, 2) * 10000);
-     
-      
-      
-      
-      
+
       if (bmi < 24) {
         document.getElementById('resualt').innerHTML = ` your BMI is : ${bmi} &#128522`;
-        
+
       }
       if (bmi > 24) {
         document.getElementById('resualt').innerHTML = ` your BMI is : ${bmi} &#128546`;
-        
+
       }
       if (bmi > 30) {
         document.getElementById('resualt').innerHTML = ` your BMI is : ${bmi} &#128557`;
-        
-        
+
+
       }
-      var obj = {
-        h:height,
-        w:weight,
-        b : bmi
+      var userData = {
+        userHeight: height,
+        userWeight: weight,
+        userBmi: bmi
       };
-      
-      saveBmis(obj);
+
+      saveBmis(userData);
+
     }
 
     function saveBmis(event) {
       var BMIs = [];
+      if (localStorage.getItem('session') === null) {
+        BMIs = [];
 
-      BMIs = JSON.parse(localStorage.getItem('session') || []) ;
+      } else {
+
+        BMIs = JSON.parse(localStorage.getItem('session'));
+      }
       BMIs.push(event);
       localStorage.setItem('session', JSON.stringify(BMIs));
+
     }
-
-
-
-
-
 
     function re() {
       document.getElementById("floatingheight").innerHTML = '';
