@@ -1,4 +1,4 @@
- html{
+html{
     height: 100%;
 }
 body {
@@ -12,57 +12,28 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-.container {
-    width: 100%;
-}
-
-.form-box {
+/* .container{
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-}
 
-.form-box-sub {
-    background-color: #ffffff2b;
-    padding: 36px;
-    text-align: center;
-    border-radius: 4px;
-    max-width: 40%;
-    
-}
-
-.form-box-sub span {
-    font-size: x-large;
-    margin: 16px 0;
-}
-
-form {
-    margin: 16px 0;
-    
-}
-
-.form-floating {
-    margin-bottom: 1rem;
-}
-
-.btn {
+} */
+.picBox{
     width: 100%;
-    margin-bottom: 16px;
+    /* display: flex; */
 }
-#errorNumber , #error {
-    color: red;
-    font-size: small;
+.bd-placeholder-img{
+    border-radius: 50%;
+    width:50%;
+    height: 60%;
 }
-#resualt , #accepted , #acceptedHeight {
-    color: green;
-    font-size: small;
     
-}
-#errorNumberheight  {
-    color: red;
-    font-size: small;
+
+.picBorder{
+    border: 1px solid white;
+    background-color: #fff;
+    /* margin: 2px; */
 }
 .breadcrumb li{
     display: flex;
@@ -84,17 +55,27 @@ form {
     color: #fff;
     
 }
+.card{
 
+    align-items: center;
+    justify-content: center;
+}
+.navMain{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
- 
+}
 @media screen and (max-width: 425px) {
-    .ulNav {
-        display: none;
-    }
+    
     .form-box-sub{
         max-width: 71%;
     }
-    .ulNavSm{
-        display:inline;
+    .navbar , #navbarToggleExternalContent {
+        width:103%;
     }
+    .navMain{
+        display: none;
+    }
+    
 }
